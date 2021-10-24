@@ -5,7 +5,8 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     public float speedPlayer = 0.5f;
-    //public Transform camara;
+    public GameObject camaraActivate;
+    Vector3 personajeLimite = new Vector3(-0f, 1.8f - 12f);
 
     // Start is called before the first frame update
     void Start()
@@ -32,12 +33,13 @@ public class PlayerMovement : MonoBehaviour
 
         Vector3 movementPlayer = new Vector3(ejeHorizontal, 0, ejeVertical);
         transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
-        //movementPlayer.Normalize();
+        
 
         if (movementPlayer != Vector3.zero)
         {
             transform.forward = movementPlayer;
         }
+
 
 
     }
