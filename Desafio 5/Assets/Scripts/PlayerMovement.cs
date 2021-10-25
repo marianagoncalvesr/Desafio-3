@@ -9,7 +9,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 personajeLimite = new Vector3(-0f, 1.8f - 12f);
     AudioSource steps;
     float ejeHorizontal;
-    float ejeVertical;
     public float velocidadRotacion = 100f;
 
     // Start is called before the first frame update
@@ -47,24 +46,5 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += transform.forward * -1 * Time.deltaTime * speedPlayer;
         }
-
-        
-
-        if (ejeVertical != 0)
-        {
-           
-            if (steps.isPlaying == false)
-            {
-                steps.Play();
-            }
-            
-        }
-        else 
-        {
-            steps.Stop();
-        }
-
-
-
     }
 }
