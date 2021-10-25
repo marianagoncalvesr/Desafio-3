@@ -23,7 +23,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Movement();
+      
     }
 
     private void LateUpdate()
@@ -34,7 +34,7 @@ public class PlayerMovement : MonoBehaviour
     //Movimiento del personaje
     void Movement()
     {
-        float ejeHorizontal = Input.GetAxis("Horizontal");
+        ejeHorizontal = Input.GetAxis("Horizontal");
         Vector3 movementPlayer = new Vector3(0, 0, 0);
         transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
         this.transform.Rotate(Vector3.up * ejeHorizontal * velocidadRotacion * Time.deltaTime);
@@ -52,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (ejeVertical != 0)
         {
-            //transform.forward = movementPlayer;
+           
             if (steps.isPlaying == false)
             {
                 steps.Play();
