@@ -10,14 +10,14 @@ public class PlayerMovement : MonoBehaviour
     AudioSource steps;
     float ejeHorizontal;
     float ejeVertical;
-    Rigidbody rb;
+    public float velocidadRotacion = 100f;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(-14f, 1.8f, -12f);
         steps = GetComponent<AudioSource>();
-        rb = GetComponent<Rigidbody>();
+        
     }
 
     // Update is called once per frame
@@ -34,19 +34,21 @@ public class PlayerMovement : MonoBehaviour
     //Movimiento del personaje
     void Movement()
     {
-        ejeHorizontal = Input.GetAxis("Horizontal");
-        ejeVertical = Input.GetAxis("Vertical");
-
-        Vector3 movementPlayer = new Vector3(0, 0, ejeVertical);
-        //transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
-        this.transform.Rotate(Vector3.up * ejeHorizontal * 50 * Time.deltaTime);
-
+        float ejeHorizontal = Input.GetAxis("Horizontal");
+        Vector3 movementPlayer = new Vector3(0, 0, 0);
+        transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
+        this.transform.Rotate(Vector3.up * ejeHorizontal * velocidadRotacion * Time.deltaTime);
+        
         if (Input.GetKey(KeyCode.W))
         {
-            transform.localPosition += Vector3.forward * Time.deltaTime * speedPlayer;
+            transform.position += transform.forward * Time.deltaTime * speedPlayer;
+        }
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.position += transform.forward * -1 * Time.deltaTime * speedPlayer;
         }
 
-        //rb.AddForce(this.transform.forward * ejeVertical);
+        
 
         if (ejeVertical != 0)
         {
