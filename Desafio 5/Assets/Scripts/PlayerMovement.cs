@@ -8,12 +8,16 @@ public class PlayerMovement : MonoBehaviour
     public GameObject camaraActivate;
     Vector3 personajeLimite = new Vector3(-0f, 1.8f - 12f);
     AudioSource steps;
+    float ejeHorizontal;
+    float ejeVertical;
+    Rigidbody rb;
 
     // Start is called before the first frame update
     void Start()
     {
         transform.position = new Vector3(-14f, 1.8f, -12f);
         steps = GetComponent<AudioSource>();
+        rb = GetComponent<Rigidbody>();
     }
 
     // Update is called once per frame
@@ -30,16 +34,23 @@ public class PlayerMovement : MonoBehaviour
     //Movimiento del personaje
     void Movement()
     {
-        float ejeHorizontal = Input.GetAxis("Horizontal");
-        float ejeVertical = Input.GetAxis("Vertical");
+        ejeHorizontal = Input.GetAxis("Horizontal");
+        ejeVertical = Input.GetAxis("Vertical");
 
-        Vector3 movementPlayer = new Vector3(ejeHorizontal, 0, ejeVertical);
-        transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
+        Vector3 movementPlayer = new Vector3(0, 0, ejeVertical);
+        //transform.Translate(speedPlayer * Time.deltaTime * movementPlayer, Space.World);
+        this.transform.Rotate(Vector3.up * ejeHorizontal * 50 * Time.deltaTime);
 
-
-        if (movementPlayer != Vector3.zero)
+        if (Input.GetKey(KeyCode.W))
         {
-            transform.forward = movementPlayer;
+            transform.localPosition += Vector3.forward * Time.deltaTime * speedPlayer;
+        }
+
+        //rb.AddForce(this.transform.forward * ejeVertical);
+
+        if (ejeVertical != 0)
+        {
+            //transform.forward = movementPlayer;
             if (steps.isPlaying == false)
             {
                 steps.Play();
