@@ -6,7 +6,6 @@ public class BalaController : MonoBehaviour
 {
     public float bulletSpeed = 10f;
 
-
     // Start is called before the first frame update
     void Start()
     {
@@ -17,25 +16,24 @@ public class BalaController : MonoBehaviour
     void Update()
     {
         Direccion();
-        Destruccion();
+        Destruccion();     
+    }
 
-        //direccion de la bala
-        void Direccion()
+    //direccion de la bala
+    void Direccion()
+    {
+
+        transform.Translate(Time.deltaTime * Vector3.forward * bulletSpeed);
+
+    }
+
+    //destruccion de bala
+    void Destruccion()
+    {
+        if (this.transform.position.z < -50 || this.transform.position.z > 50 ||
+      this.transform.position.x < -50 || this.transform.position.x > 50)
         {
-
-            transform.Translate(Time.deltaTime * Vector3.forward * bulletSpeed);
-
+            Destroy(this.gameObject);
         }
-
-        //destruccion de bala
-        void Destruccion()
-        {
-            if (this.transform.position.z < -50 || this.transform.position.z > 50 ||
-          this.transform.position.x < -50 || this.transform.position.x > 50)
-            {
-                Destroy(this.gameObject);
-            }
-        }
-     
     }
 }
