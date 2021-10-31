@@ -21,7 +21,7 @@ public class DisparosSpawner : MonoBehaviour
         ///Con espacio instanciamos las balas
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (bulletCount < 15) 
+            if (bulletCount < 40) 
             {
                 Disparo();
                 bulletCount++;
