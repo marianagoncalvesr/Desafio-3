@@ -10,7 +10,7 @@ public class PortalController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        
     }
 
     // Update is called once per frame
@@ -23,9 +23,9 @@ public class PortalController : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-
+            
             Debug.Log("colisiona");
-         
+           
 
         }
 

@@ -40,6 +40,6 @@ public class playerMovement : MonoBehaviour
     public void ChangeSize()
     {
         Debug.Log("playermovement script funcionando");
-        //transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+
     }
 }
