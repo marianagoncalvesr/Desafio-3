@@ -6,7 +6,7 @@ public class playerMovement : MonoBehaviour
 {
     [SerializeField] int playerSpeed = 5;
     [SerializeField] int rotationSpeed = 5;
-   // public bool size;
+    public bool pequenio;
 
     // Start is called before the first frame update
     void Start()
@@ -39,7 +39,26 @@ public class playerMovement : MonoBehaviour
     }
     public void ChangeSize()
     {
-        Debug.Log("playermovement script funcionando");
+        Debug.Log("Player cambiando escala");
+        if (pequenio == true)
+        {
+            transform.localScale = new Vector3(1f, 1f, 1f);
+        }
+        else
+        {
+            transform.localScale = new Vector3(0.5f, 0.5f, 0.5f);
+        }
+        pequenio = !pequenio;
+       
+    }
+    void OnCollisionEnter(Collision collisionInfo)
+    {
+        if(!collisionInfo.gameObject.CompareTag("Floor"))
+        {
+            Debug.Log("Soy un " + this.gameObject.name + " colisionando contra " + collisionInfo.gameObject.name);
+    
+        }
+ 
 
     }
 }
