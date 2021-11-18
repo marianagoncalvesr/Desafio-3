@@ -2,56 +2,48 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class enemyController : MonoBehaviour
+public class EnemyController : MonoBehaviour
 {
+    [SerializeField] GameObject player;
     [SerializeField] int enemySpeed = 10;
-    private GameObject player;
     [SerializeField] int distanceEnemy = 15;
 
-    enum Rotacion { Seguimiento = 1, Estatico };
-    [SerializeField] private Rotacion movimiento;
 
     // Start is called before the first frame update
     void Start()
     {
-        player = GameObject.Find("player");
-
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
-    {       
-        switch (movimiento)
-        {
-            case Rotacion.Seguimiento:
-                LookAtPlayer(); 
-                EnemyMovement();            
-                break;
-            case Rotacion.Estatico:
-                LookAtPlayer();
-                break;
-
-            default:
-                Debug.Log("No se asigno tipo de movimiento");
-                break;
-        }
-    }
-
-    void EnemyMovement()
     {
-        Vector3 direction = (player.transform.position - transform.position).normalized;
-        Vector3 direction2 = (player.transform.position - transform.position);
-        Debug.Log(direction2.magnitude);
+        RaycastEnemy();
+    }
 
-        if (direction2.magnitude > distanceEnemy)
+    private void RaycastEnemy()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(this.transform.position, this.transform.TransformDirection(Vector3.forward), out hit, 30f))
+
         {
-            transform.position += enemySpeed * direction * Time.deltaTime;
-        }
-        
-        Destroy(gameObject, 10f);
+            Debug.Log("Look at");
+            LookAtPlayer();
 
+        }
+    }
+
+    private void OnDrawGizmos()
+
+    {
+        Gizmos.color = Color.red;
+
+        Gizmos.DrawRay(this.transform.position, this.transform.TransformDirection(Vector3.forward) * 30f);
 
     }
+
+
 
     void LookAtPlayer()
     {
