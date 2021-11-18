@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Desafio 10.unity
+    guid: 48041423cbc9eed49aa4fa7f97624995
+  - enabled: 1
+    path: Assets/Scenes/escena 2.unity
+    guid: 37c57fdabc6e10848a34e3d787b9e150
+  - enabled: 1
+    path: Assets/Scenes/GameOver.unity
+    guid: d1e62cd195b1f6a4f9580cb3e6d0f712
   m_configObjects: {}
