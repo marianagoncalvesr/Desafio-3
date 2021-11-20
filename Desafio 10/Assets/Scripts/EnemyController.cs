@@ -18,32 +18,8 @@ public class EnemyController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        RaycastEnemy();
+        
     }
-
-    private void RaycastEnemy()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(this.transform.position, this.transform.TransformDirection(Vector3.forward), out hit, 30f))
-
-        {
-            Debug.Log("Look at");
-            LookAtPlayer();
-
-        }
-    }
-
-    private void OnDrawGizmos()
-
-    {
-        Gizmos.color = Color.red;
-
-        Gizmos.DrawRay(this.transform.position, this.transform.TransformDirection(Vector3.forward) * 30f);
-
-    }
-
-
 
     void LookAtPlayer()
     {
