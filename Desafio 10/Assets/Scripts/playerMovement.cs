@@ -36,4 +36,13 @@ public class playerMovement : MonoBehaviour
         }
 
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.CompareTag("Enemy"))
+        {
+            Destroy(this.gameObject);
+            Debug.Log("No esquivaste los enemigos");
+        }
+    }
 }
