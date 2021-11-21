@@ -22,15 +22,28 @@ public class EnemysController : MonoBehaviour
 
     private void DisableEnemys()
     {
-        for (int enemy = 0; enemy < enemys.Length; enemy++)
+        for (int a = 0; a < enemys.Length; a++)
         {
-            enemys[enemy].SetActive(false);
+            enemys[a].SetActive(false);
+            //enemys[a].GetComponent<EnemyController>().SetActiveEnemy(false);
+
+            //GetEnemyComponent(enemys[a]).SetActiveEnemy(true);
         }
     }
 
     private void OneActivate()
     {
         int enemyIndex = Random.Range(0, enemys.Length);
+
+        //enemys[enemyIndex].GetComponent<EnemyController>().SetActiveEnemy(true);
+        //GetEnemyComponent(enemys[enemyIndex]).SetActiveEnemy(true);
         enemys[enemyIndex].SetActive(true);
+
+    }
+
+    private EnemyController GetEnemyComponent(GameObject enemy)
+
+    {
+        return enemy.GetComponent<EnemyController>();
     }
 }

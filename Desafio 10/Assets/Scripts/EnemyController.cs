@@ -16,7 +16,10 @@ public class EnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        
         player = GameObject.Find("Player");
+
+
 
     }
 
@@ -30,6 +33,7 @@ public class EnemyController : MonoBehaviour
             EnemyMovement();
             LookAtPlayer();
         }
+      
         
     }
 
@@ -56,5 +60,12 @@ public class EnemyController : MonoBehaviour
         Quaternion newRotation = Quaternion.LookRotation(player.transform.position - transform.position);
         transform.rotation = newRotation;
     }
+
+   public void SetActiveEnemy(bool status)
+    {
+        isActive = status;
+    }
+
+
 
 }
